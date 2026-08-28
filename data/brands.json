@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tonghop",
+    "name": "Tổng hợp",
+    "country": "—",
+    "category": "Đa dụng / nhiều hãng",
+    "color": "#2F7A4D",
+    "on": "#FFFFFF",
+    "count": 155
+  },
+  {
+    "id": "mirka",
+    "name": "Mirka",
+    "country": "Phần Lan",
+    "category": "Máy chà nhám",
+    "color": "#FDC100",
+    "on": "#141414",
+    "count": 290
+  },
+  {
+    "id": "devilbiss",
+    "name": "DeVilbiss",
+    "country": "Mỹ",
+    "category": "Súng phun sơn",
+    "color": "#C4300E",
+    "on": "#FFFFFF",
+    "count": 25
+  },
+  {
+    "id": "anestiwata",
+    "name": "Anest Iwata",
+    "country": "Nhật Bản",
+    "category": "Súng phun sơn",
+    "color": "#007C9C",
+    "on": "#FFFFFF",
+    "count": 25
+  },
+  {
+    "id": "dynabrade",
+    "name": "Dynabrade",
+    "country": "Mỹ",
+    "category": "Máy chà nhám khí nén",
+    "color": "#FF4712",
+    "on": "#FFFFFF",
+    "count": 106
+  },
+  {
+    "id": "binks",
+    "name": "Binks",
+    "country": "Mỹ",
+    "category": "Bơm & súng phun CN",
+    "color": "#0E3EA0",
+    "on": "#FFFFFF",
+    "count": 64
+  },
+  {
+    "id": "compact",
+    "name": "Compact Tools",
+    "country": "Nhật Bản",
+    "category": "Máy chà nhám khí nén",
+    "color": "#2D55AA",
+    "on": "#FFFFFF",
+    "count": 56
+  },
+  {
+    "id": "oem",
+    "name": "OEM",
+    "country": "Sản xuất tại Châu Âu",
+    "category": "Phụ kiện & linh kiện thay thế",
+    "color": "#4A5568",
+    "on": "#FFFFFF",
+    "count": 73
+  },
+  {
+    "id": "prona",
+    "name": "Prona",
+    "country": "Trung Quốc",
+    "category": "Súng phun sơn & dụng cụ khí nén",
+    "color": "#0170C1",
+    "on": "#FFFFFF",
+    "count": 166
+  },
+  {
+    "id": "wagner",
+    "name": "Wagner",
+    "country": "Đức",
+    "category": "Thiết bị phun sơn CN",
+    "color": "#FFCB00",
+    "on": "#141414",
+    "count": 62
+  }
+]

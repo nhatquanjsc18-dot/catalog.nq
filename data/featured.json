@@ -1,0 +1,180 @@
+[
+  {
+    "slug": "miw9502022ca",
+    "name": "Mirka® LEROS 950CV EU Ø 225 mm, quỹ đạo 5,0 mm",
+    "model": "MIW9502022BA",
+    "brandId": "mirka",
+    "subCategory": "Máy chà nhám điện",
+    "industries": [
+      "construction"
+    ],
+    "shortDesc": "Máy chà nhám tường và trần trục khuỷu không chổi than, nhẹ và linh hoạt, cho tư thế làm việc thoải mái.",
+    "img": "https://img.mirka.com/medias/MIW9502022BA.jpg?context=bWFzdGVyfGltYWdlc3w5MjExNTV8aW1hZ2UvanBlZ3xhRGxpTDJnM1lTODVOVFl5TVRZME9ESXlNRFEyTDAxSlZ6azFNREl3TWpKQ1FTNXFjR2N8NDVhNmIxNDE0ODk5NGFkYTZhNmFjN2IxMzlkNmYwNDE2MzQwZDRjNDNjZjhlNDMxYzczOWEwN2MxNDk3YzRiNg&tr=w-720%2ch-720%2ccm-pad_resize%2cbg-FFFFFF",
+    "specs": {
+      "Hệ thống hút bụi": "Central vacuum ready",
+      "Tốc độ tối đa": "8000 rpm",
+      "Tốc độ tối thiểu": "4000 rpm",
+      "Mức ồn LpA": "73.0 dB",
+      "Quỹ đạo chà nhám": "5 mm",
+      "Loại quỹ đạo": "Random",
+      "Đường kính đĩa nhám": "225 mm",
+      "Đĩa nhám đi kèm (mã)": "MIW9514312",
+      "Loại phích cắm": "EU",
+      "Công suất đầu vào": "350 W",
+      "Mức rung": "2.5 m/s²",
+      "Điện áp cấp nguồn": "220-240 VAC",
+      "Trọng lượng": "3.5 kg"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "w-61-series",
+    "name": "Súng phun sơn cầm tay W-61 Series",
+    "model": "w-61-series",
+    "brandId": "anestiwata",
+    "subCategory": "",
+    "industries": [
+      "wood",
+      "construction"
+    ],
+    "shortDesc": "Dòng súng phun sơn cỡ nhỏ bán chạy lâu năm của Anest Iwata, phù hợp cho cả người mới lẫn thợ sơn lành nghề, dùng cho sơn kim loại và gỗ. Lưu ý: dòng W-61 hiện có nhiều hàng giả/nhái trên thị trường Việt Nam.",
+    "img": "https://anest-iwata.vn/wp-content/uploads/2024/12/1558672471.jpg",
+    "specs": {
+      "Đường kính béc phun": "0.8 - 1.5 mm (7 biến thể: W-61-0, 1S, 2S, 3S, 1G, 2G, 3G)",
+      "Áp suất khí sử dụng": "0.29 - 0.34 MPa",
+      "Tiêu thụ khí": "75 - 200 lít/phút",
+      "Lưu lượng sơn": "95 - 200 ml/phút",
+      "Khoảng cách phun tiêu chuẩn": "200 mm",
+      "Bề rộng vệt phun": "100 - 220 mm",
+      "Ứng dụng": "Sơn kim loại, sơn gỗ"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "5-125-mm-dia-compact-rebel-right-angle-depressed-center-wheel-grinder",
+    "name": "5\" (125 mm) Dia. Compact Rebel Right Angle Depressed Center Wheel Grinder",
+    "model": "58902",
+    "brandId": "dynabrade",
+    "subCategory": "Rebel Series",
+    "industries": [],
+    "shortDesc": "Máy mài góc khí nén dùng đá mài tâm trũng, dòng Compact Rebel Ø125mm, công suất 2.2 hp, tốc độ tối đa 12000 RPM, phù hợp mài phá và làm sạch bề mặt kim loại.",
+    "img": "https://apac.dynabrade.com/assets/cache/7aa5876d-6f56-4c6a-9f1f-5a572f59c274/4072324910-58902.jpg",
+    "specs": {
+      "Dòng sản phẩm": "Rebel",
+      "Công suất (hp)": "2.2 hp",
+      "Công suất (W)": "1600 W",
+      "Lưu lượng khí tối đa (SCFM/LPM)": "107",
+      "Ren đầu vào khí": "3/8\" NPT",
+      "Áp suất khí (Bar)": "6,2",
+      "Áp suất khí (PSIG)": "90",
+      "Kiểu xả khí": "Rear",
+      "Chiều cao (in)": "4 in",
+      "Chiều cao (mm)": "102 mm",
+      "Đường kính trong ống hơi": "1/2 in.",
+      "Chiều dài (in)": "10 in",
+      "Chiều dài (mm)": "241 mm",
+      "Tốc độ tối đa (RPM)": "12000",
+      "Loại động cơ": "Pneumatic Geared",
+      "Công suất âm thanh (dB[A])": "109",
+      "Kiểu máy": "Right Angle",
+      "Loại hút bụi": "Non-Vacuum",
+      "Trọng lượng (kg)": "2.13 kg",
+      "Trọng lượng (lb)": "4.7 lb",
+      "Chiều rộng (in)": "9 in",
+      "Chiều rộng (mm)": "229 mm"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "robot-rea-gun",
+    "name": "Robot REA Gun",
+    "model": "robot-rea-gun",
+    "brandId": "binks",
+    "subCategory": "Súng/đầu phun sơn công nghiệp",
+    "industries": [],
+    "shortDesc": "Súng phun tĩnh điện tự động nhỏ gọn cho robot, kết hợp lực xuyên thấm (penetration power) và hiệu suất truyền sơn cao nhờ hiệu ứng tĩnh điện, độ bền cao cho vận hành lâu dài, dùng nguồn cao áp gắn ngoài.",
+    "img": "https://binks.canto.com/direct/image/e2skch1lr148tfagin6ngl8k6r/Xun0ivojKXchJRF-b4eLr5uMSDI/m3000/800",
+    "specs": {
+      "Kiểu": "HV power supply type",
+      "Điện áp phóng": "DC -60 kV",
+      "Áp suất khí": "1 – 6 kg/cm²",
+      "Lưu lượng sơn khuyến nghị": "300 mL/phút",
+      "Khí tiêu thụ": "100 – 210 L/phút (khí phun sương + khí tạo mẫu)",
+      "Kích thước/Trọng lượng": "Dài 240 mm / 500 g"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "compact-903cd",
+    "name": "Máy chà nhám DA khí nén (có hút bụi) 903CD",
+    "model": "compact-903cd",
+    "brandId": "compact",
+    "subCategory": "Máy chà nhám DA - có hút bụi",
+    "industries": [],
+    "shortDesc": "Máy chà nhám hai tác động (Double Action) chạy khí nén, tích hợp hút bụi qua lỗ đế, giảm bụi phát tán khi làm phẳng và hoàn thiện bề mặt.",
+    "img": "https://www.compacttool.com/data/item/big/c5f1b36d095aceb61d23b06e4d1e6c1c.jpg",
+    "specs": {
+      "Mã model": "903CD",
+      "Tốc độ quay (rpm)": "8,500",
+      "Lưu lượng khí (l/min)": "300",
+      "Đường kính quỹ đạo (mm)": "3",
+      "Kích thước đế nhám (mm)": "φ123",
+      "Kích thước (mm)": "W123×H67×L177",
+      "Trọng lượng (kg)": "0.56",
+      "Độ ồn (dBA)": "86"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "prona-ral-101",
+    "name": "Súng phun sơn tự động áp thấp bảo vệ môi trường RAL-101",
+    "model": "prona-ral-101",
+    "brandId": "prona",
+    "subCategory": "Súng phun sơn tự động",
+    "industries": [],
+    "shortDesc": "Cả kim phun và béc phun làm bằng thép không gỉ, gia công trên thiết bị độ chính xác cao, chống mài mòn và ăn mòn tốt.",
+    "img": "https://omo-oss-image.thefastimg.com/portal-saas/new2023102717520985071/cms/image/64ebe415-a2fd-4bfb-8702-2e2691d86bb6.jpg",
+    "specs": {
+      "Các mã biến thể": "RAL-101-P08(W), RAL-101-P10(W), RAL-101-P12(W)",
+      "Kiểu cấp sơn": "Pressure Feed",
+      "Đường kính béc phun (mm)": "RAL-101-P08(W): 0.8; RAL-101-P10(W): 1.0; RAL-101-P12(W): 1.2",
+      "Loại chụp khí phù hợp": "RAL-101-P08(W): E1; RAL-101-P10(W): E1; RAL-101-P12(W): G2",
+      "Áp suất khí": "2.0-3.0(0.2-0.29)",
+      "Lượng khí tiêu thụ (l/min)": "RAL-101-P08(W): 430; RAL-101-P10(W): 430; RAL-101-P12(W): 530",
+      "Lưu lượng sơn (ml/min)": "RAL-101-P08(W): 140; RAL-101-P10(W): 150; RAL-101-P12(W): 350",
+      "Kích thước tia phun ±20 (mm)": "RAL-101-P08(W): 200; RAL-101-P10(W): 200; RAL-101-P12(W): 270",
+      "Khối lượng (g)": "465"
+    },
+    "specConfidence": "verified"
+  },
+  {
+    "slug": "dp-1-40",
+    "name": "DP 1-40",
+    "model": "dp-1-40",
+    "brandId": "wagner",
+    "subCategory": "Hệ thống cấp liệu",
+    "industries": [
+      "construction",
+      "wood"
+    ],
+    "shortDesc": "Bơm màng kép khí nén cho ứng dụng airspray áp suất thấp, phù hợp cấp sơn trực tiếp cho 1-2 súng phun hoặc tích hợp vào hệ trộn/đổi màu, không cần bộ điều áp vật liệu riêng.",
+    "img": "https://cdn.wagner-group.com/fileadmin/pim/1200x1200/WAGNER_DP1-40_dynL_ID0738_WA24018INTPIC02_99863.jpg",
+    "specs": {
+      "Lĩnh vực ứng dụng": "Sơn kim loại, Sơn nhựa, Sơn gỗ",
+      "Kỹ thuật phun": "Airspray",
+      "Vật liệu xử lý được": "Gốc nước, Gốc dung môi, Vật liệu mài mòn, dễ đứt gãy cấu trúc, nhạy ẩm",
+      "Vật liệu tiếp xúc": "Nhôm mạ niken, Thép không gỉ, POM (polyacetal)",
+      "Kích thước": "192 x 165 x 265 mm",
+      "Trọng lượng": "3.2 kg",
+      "Đầu ra vật liệu": "I G 3/8''",
+      "Đầu nối khí nén": "M G 1/4''",
+      "Áp suất khí đầu vào": "1-6 bar",
+      "Áp suất vật liệu tối đa": "6 bar",
+      "Lưu lượng mỗi hành trình kép": "40 cm³",
+      "Mức ồn tối đa": "62 dB(A)",
+      "Tỷ số truyền (:1)": "1:1",
+      "Nhiệt độ vật liệu": "5-60 °C"
+    },
+    "specConfidence": "verified"
+  }
+]

@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Catalog thông số sản phẩm — Nhất Quán</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#EDE9E0;
+    --text:#1C1B18;
+    --text-muted:#6B6459;
+    --border:#DDD7C9;
+    --border-strong:#C7BFAC;
+    --chrome:#00466E;
+    --chrome-2:#005F92;
+    --chrome-text:#F2F8FC;
+    --chrome-text-dim:#AFD3E8;
+    --chrome-line:#0C7CB2;
+    --accent:#005F92;
+    --accent-tint:#EAF3F8;
+    --chip-bg:#EDE9E0;
+    --shadow: 0 1px 2px rgba(28,27,24,0.06), 0 6px 20px rgba(28,27,24,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#15171A; --surface:#1D2024; --surface-2:#24282D; --text:#EDEBE4; --text-muted:#9C9587;
+      --border:#32363C; --border-strong:#41464D; --chrome:#00304A; --chrome-2:#00466E;
+      --chrome-text:#F2F8FC; --chrome-text-dim:#9DC3DA; --chrome-line:#0C7CB2;
+      --accent:#3B9CCB; --accent-tint:#173040; --chip-bg:#24282D;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15171A; --surface:#1D2024; --surface-2:#24282D; --text:#EDEBE4; --text-muted:#9C9587;
+    --border:#32363C; --border-strong:#41464D; --chrome:#00304A; --chrome-2:#00466E;
+    --chrome-text:#F2F8FC; --chrome-text-dim:#9DC3DA; --chrome-line:#0C7CB2;
+    --accent:#3B9CCB; --accent-tint:#173040; --chip-bg:#24282D;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:"Bahnschrift","Arial Narrow","Helvetica Neue Condensed","Segoe UI",sans-serif;
+    font-weight:700; margin:0; text-wrap:balance;
+  }
+  table{font-variant-numeric: tabular-nums;}
+  .num{font-variant-numeric: tabular-nums;}
+  img{max-width:100%; display:block;}
+
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(160deg, var(--chrome-2) 0%, var(--chrome) 100%);
+    color:var(--chrome-text); padding:18px 28px 0; box-shadow:0 2px 0 var(--chrome-line);
+  }
+  .topbar-inner{max-width:1320px; margin:0 auto;}
+  .brand-row{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-bottom:14px;}
+  .brand-row h1{font-size:26px; letter-spacing:0.02em;}
+  .brand-row .eyebrow{
+    display:block; font-family:"Segoe UI",sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-text-dim); margin-bottom:4px;
+  }
+  .subtitle{font-size:13px; color:var(--chrome-text-dim); max-width:520px; text-align:right;}
+
+  .layout-tabs{display:flex; gap:4px; border-bottom:1px solid rgba(255,255,255,0.18);}
+  .layout-tab{
+    appearance:none; border:none; background:transparent; color:var(--chrome-text-dim);
+    font-family:"Bahnschrift","Arial Narrow",sans-serif; font-size:14px; font-weight:600;
+    letter-spacing:0.02em; padding:11px 18px 13px; cursor:pointer; border-bottom:3px solid transparent;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .layout-tab small{font-family:"Segoe UI",sans-serif; font-weight:400; font-size:10.5px; letter-spacing:0.03em; color:rgba(242,248,252,0.55);}
+  .layout-tab:hover{color:var(--chrome-text);}
+  .layout-tab.active{color:var(--chrome-text); border-bottom-color:#FF9500;}
+  .layout-tab:focus-visible{outline:2px solid #FF9500; outline-offset:-2px;}
+
+  .filter-bar{max-width:1320px; margin:0 auto; padding:14px 28px 4px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .filter-label{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-right:4px;}
+  .chip{
+    appearance:none; cursor:pointer; font-family:"Segoe UI",sans-serif; font-size:12.5px; font-weight:600;
+    padding:6px 13px; border-radius:999px; border:1.5px solid var(--border-strong);
+    background:var(--chip-bg); color:var(--text-muted); display:flex; align-items:center; gap:7px;
+    transition:border-color .12s, color .12s;
+  }
+  .chip .dot{width:8px; height:8px; border-radius:50%; background:var(--dot);}
+  .chip .count{font-size:10.5px; font-weight:700; opacity:0.65; font-variant-numeric:tabular-nums;}
+  .chip.on{color:var(--text); border-color:var(--dot); background:var(--surface);}
+  .chip:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+
+  .industry-row{max-width:1320px; margin:0 auto; padding:6px 28px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .industry-chip{
+    appearance:none; cursor:pointer; display:flex; align-items:center; gap:8px;
+    padding:7px 14px 7px 10px; border-radius:999px; border:1.5px solid var(--border-strong);
+    background:var(--chip-bg); color:var(--text-muted); font-family:"Segoe UI",sans-serif;
+    font-size:12.5px; font-weight:600; transition:border-color .12s, color .12s, background .12s;
+  }
+  .industry-chip svg{width:18px; height:18px; flex:none; stroke:currentColor; fill:none; stroke-width:1.6;}
+  .industry-chip:hover{color:var(--text);}
+  .industry-chip.on{color:#fff; background:var(--accent); border-color:var(--accent);}
+  .industry-chip:focus-visible{outline:2px solid var(--accent); outline-offset:1px;}
+  .industry-chip .count{font-size:10.5px; font-weight:700; opacity:0.65; font-variant-numeric:tabular-nums;}
+
+  .search-row{max-width:1320px; margin:0 auto; padding:0 28px 16px;}
+  .search-input{
+    width:100%; max-width:420px; padding:9px 14px; border-radius:8px; border:1.5px solid var(--border-strong);
+    background:var(--surface); color:var(--text); font-size:13.5px; font-family:"Segoe UI",sans-serif;
+  }
+  .search-input:focus-visible{outline:2px solid var(--accent);}
+
+  main{max-width:1320px; margin:0 auto; padding:0 28px 28px;}
+  .disclaimer{
+    background:var(--surface-2); border:1px dashed var(--border-strong); border-radius:8px;
+    padding:12px 16px; font-size:12.5px; color:var(--text-muted); margin-bottom:26px;
+  }
+  .disclaimer b{color:var(--text);}
+
+  .view{display:none;}
+  .view.active{display:block;}
+
+  .brand-section{margin-bottom:44px;}
+  .brand-head{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+    border-bottom:3px solid var(--bc); padding-bottom:10px; margin-bottom:18px; flex-wrap:wrap;
+  }
+  .brand-head-left{display:flex; align-items:center; gap:12px;}
+  .brand-name{
+    display:inline-block; font-size:19px; font-weight:800; letter-spacing:0.01em;
+    background:var(--bc); color:var(--bc-on); padding:5px 12px 6px; border-radius:6px;
+  }
+  .brand-meta{font-size:12px; color:var(--text-muted);}
+  .brand-count{font-size:11px; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;}
+
+  .subcat-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .subcat-tab{
+    font-size:11.5px; font-weight:700; letter-spacing:0.03em; text-transform:uppercase;
+    padding:6px 12px; border-radius:6px; border:1.5px solid var(--bc); background:transparent;
+    color:var(--text); cursor:pointer; transition:background .12s,color .12s;
+  }
+  .subcat-tab:hover{background:color-mix(in srgb, var(--bc) 18%, transparent);}
+  .subcat-tab.on{background:var(--bc); color:var(--bc-on); border-color:var(--bc);}
+
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:16px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--bc);
+    border-radius:10px; padding:14px 14px 14px; box-shadow:var(--shadow);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .card-thumb{
+    height:140px; border-radius:6px; background:#FFFFFF; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .card-thumb img{height:100%; width:100%; object-fit:contain;}
+  .card-thumb .ph{color:var(--text-muted); font-size:11px; letter-spacing:0.05em; text-transform:uppercase;}
+  .card-title{font-size:14px; font-weight:700; line-height:1.35;}
+  .card-model{font-size:11px; color:var(--text-muted); margin-top:5px;}
+  .card-specs{display:flex; flex-direction:column; gap:5px; font-size:12px;}
+  .card-specs div{display:flex; justify-content:space-between; gap:10px; border-bottom:1px solid var(--border); padding-bottom:5px;}
+  .card-specs div:last-child{border-bottom:none; padding-bottom:0;}
+  .spec-k{color:var(--text-muted);}
+  .spec-v{font-weight:600; text-align:right;}
+  .card-cat{
+    align-self:flex-start; font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--bc-on); background:var(--bc); padding:3px 8px; border-radius:5px; font-weight:700;
+  }
+
+  .spec-table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:10px; box-shadow:var(--shadow);}
+  table.spec-table{width:100%; border-collapse:collapse; background:var(--surface); font-size:12.5px; min-width:640px;}
+  table.spec-table thead th{
+    background:var(--bc); color:var(--bc-on); text-align:left; padding:10px 12px; font-weight:700;
+    font-size:11px; letter-spacing:0.04em; text-transform:uppercase; white-space:nowrap;
+  }
+  table.spec-table thead th:first-child{border-top-left-radius:9px;}
+  table.spec-table thead th:last-child{border-top-right-radius:9px;}
+  table.spec-table tbody td{padding:9px 12px; border-bottom:1px solid var(--border); white-space:nowrap;}
+  table.spec-table tbody td:first-child, table.spec-table thead th:first-child{
+    min-width:260px; max-width:340px;
+  }
+  table.spec-table tbody td:first-child{
+    font-weight:700; font-size:13.5px; white-space:normal; line-height:1.35;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    overflow:hidden; text-overflow:ellipsis;
+  }
+  table.spec-table tbody td:nth-child(2){color:var(--text-muted); font-size:11.5px;}
+  table.spec-table tbody tr:nth-child(even){background:var(--surface-2);}
+  table.spec-table tbody tr:last-child td{border-bottom:none;}
+  table.spec-table tbody tr:hover{background:color-mix(in srgb, var(--bc) 8%, var(--surface));}
+
+  .sheet-list{display:flex; flex-direction:column; gap:18px;}
+  .sheet{
+    background:var(--surface); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow);
+    overflow:hidden; display:grid; grid-template-columns:220px 1fr;
+  }
+  .sheet-media{
+    background:#FFFFFF; border-right:1px solid var(--border);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    padding:16px; position:relative; overflow:hidden;
+  }
+  .sheet-media::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--bc);}
+  .sheet-media img{max-height:180px; object-fit:contain;}
+  .sheet-media .ph{width:64px; height:64px; border-radius:10px; background:var(--bc); opacity:0.14;}
+  .sheet-media-label{font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); text-align:center;}
+  .sheet-body{padding:18px 22px;}
+  .sheet-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:4px;}
+  .sheet-name{font-size:18px;}
+  .sheet-model{font-size:12px; color:var(--text-muted); margin-top:2px;}
+  .sheet-desc{font-size:12.5px; color:var(--text-muted); margin-top:8px; max-width:70ch;}
+  .sheet-tag{
+    font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--bc-on);
+    background:var(--bc); padding:4px 10px; border-radius:5px; white-space:nowrap;
+  }
+  .sheet-specs{margin-top:14px; display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:10px 20px;}
+  .sheet-spec{border-top:1px solid var(--border); padding-top:6px;}
+  .sheet-spec .spec-k{font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:2px;}
+  .sheet-spec .spec-v{font-size:13.5px; font-weight:700; text-align:left;}
+  .partial-flag{font-size:10.5px; color:var(--text-muted); margin-top:8px; font-style:italic;}
+
+  @media (max-width:640px){
+    .sheet{grid-template-columns:1fr;}
+    .sheet-media{border-right:none; border-bottom:1px solid var(--border);}
+    .sheet-media::before{width:100%; height:5px; left:0; top:0; bottom:auto;}
+    .subtitle{text-align:left;}
+    .brand-row{flex-direction:column;}
+  }
+
+  footer{max-width:1320px; margin:0 auto; padding:8px 28px 40px; font-size:11.5px; color:var(--text-muted);}
+
+  /* ---------- Intro page ---------- */
+  #page-intro{display:none;}
+  #page-intro.active{display:block;}
+  #page-products{display:none;}
+  #page-products.active{display:block;}
+  .intro-page{background:var(--bg);}
+
+  .intro-hero{
+    background:linear-gradient(160deg, var(--chrome-2) 0%, var(--chrome) 100%);
+    color:var(--chrome-text);
+  }
+  .intro-hero-inner{max-width:1320px; margin:0 auto; padding:56px 28px 48px;}
+  .intro-hero-eyebrow{
+    font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--chrome-text-dim); margin:0 0 14px;
+  }
+  .intro-hero-title{font-size:36px; line-height:1.25; max-width:820px; margin:0 0 20px; color:var(--chrome-text);}
+  .intro-hero-motto{font-size:18px; font-weight:600; letter-spacing:0.02em; color:var(--chrome-text); margin:0 0 36px; padding:0;}
+  .intro-hero-motto span{display:inline;}
+  .intro-hero-motto span + span::before{content:" - ";}
+  .intro-hero-stats{display:flex; gap:40px; flex-wrap:wrap;}
+  .intro-hero-stats div{display:flex; flex-direction:column; gap:2px;}
+  .intro-hero-stats strong{font-size:26px; font-family:"Bahnschrift","Arial Narrow",sans-serif; color:#FF9500;}
+  .intro-hero-stats span{font-size:12px; color:var(--chrome-text-dim);}
+
+  .intro-wrap{max-width:1320px; margin:0 auto; padding:40px 28px 60px;}
+  .intro-grid{display:grid; grid-template-columns:1fr 320px; gap:56px; align-items:start;}
+  .intro-main p{font-size:15.5px; line-height:1.8; color:var(--text); margin:0 0 20px; max-width:70ch;}
+  .intro-side{display:flex; flex-direction:column; gap:24px; position:sticky; top:100px;}
+  .intro-side-block{padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:10px;}
+  .intro-side-block h3, .intro-contact h3{
+    font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); margin:0 0 14px;
+  }
+  .intro-brand-chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .intro-chip{
+    display:inline-block; font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:999px;
+    background:var(--c); color:#fff;
+  }
+  .intro-quote{
+    margin:32px 0; padding:20px 24px; border-left:4px solid var(--accent);
+    background:var(--surface-2); border-radius:0 8px 8px 0;
+  }
+  .intro-quote p{font-size:15px; line-height:1.7; margin:0 0 10px; color:var(--text); max-width:none;}
+  .intro-quote cite{font-size:12.5px; color:var(--text-muted); font-style:normal;}
+  .intro-contact{
+    padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:10px;
+  }
+  .contact-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .contact-row{display:flex; align-items:flex-start; gap:12px; padding-bottom:16px; border-bottom:1px solid var(--border);}
+  .contact-row:last-child{padding-bottom:0; border-bottom:none;}
+  .contact-icon{
+    flex:none; width:34px; height:34px; border-radius:9px; background:var(--accent-tint);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .contact-icon svg{width:17px; height:17px; stroke:var(--accent); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+  .contact-body{display:flex; flex-direction:column; gap:3px; min-width:0;}
+  .contact-label{font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);}
+  .contact-value{font-size:13.5px; color:var(--text); line-height:1.5;}
+  .contact-value a{color:var(--text); text-decoration:none; font-weight:600;}
+  .contact-value a:hover{color:var(--accent); text-decoration:underline;}
+  .intro-source{font-size:12px; color:var(--text-muted); margin-top:8px;}
+  .intro-source a{color:var(--accent);}
+  @media (max-width:900px){
+    .intro-grid{grid-template-columns:1fr;}
+    .intro-side{position:static;}
+  }
+
+  /* ---------- Industries & Customers page ---------- */
+  #page-industries{display:none;}
+  #page-industries.active{display:block;}
+  .industries-page{background:var(--bg);}
+  .industries-hero{background:linear-gradient(160deg, var(--chrome-2) 0%, var(--chrome) 100%); color:var(--chrome-text);}
+  .industries-hero-inner{max-width:1320px; margin:0 auto; padding:48px 28px 40px;}
+  .industries-hero-title{font-size:32px; margin:0 0 12px; color:var(--chrome-text);}
+  .industries-hero-desc{font-size:14.5px; line-height:1.6; color:var(--chrome-text-dim); max-width:640px; margin:0;}
+  .industries-wrap{max-width:1320px; margin:0 auto; padding:36px 28px 60px;}
+  .industries-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:22px;}
+
+  .industry-card{
+    --ic: var(--accent);
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    box-shadow:var(--shadow); cursor:pointer; overflow:hidden;
+    display:flex; flex-direction:column; text-align:left; font-family:inherit; padding:0;
+    transition:transform .12s, box-shadow .12s;
+  }
+  .industry-card:hover{transform:translateY(-3px); box-shadow:0 4px 8px rgba(28,27,24,0.1), 0 12px 28px rgba(28,27,24,0.09);}
+  .industry-card:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  .industry-card-image{
+    height:150px; background:var(--surface-2); position:relative; overflow:hidden;
+  }
+  .industry-card-image img{width:100%; height:100%; object-fit:cover; display:block;}
+  .industry-card-icon-badge{
+    position:absolute; top:12px; left:12px; width:34px; height:34px; border-radius:8px;
+    background:var(--ic); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.25);
+  }
+  .industry-card-icon-badge svg{width:18px; height:18px; stroke:#fff; fill:none; stroke-width:1.6;}
+
+  .industry-card-body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px; flex:1;}
+  .industry-card-label{font-size:17px; font-weight:800; color:var(--text); margin:0; line-height:1.3;}
+  .industry-card-count{font-size:11px; font-weight:700; color:var(--ic); text-transform:uppercase; letter-spacing:0.05em;}
+
+  /* ---------- Simple photo cards (Mirka-style industries grid) ---------- */
+  .industries-grid--photo{grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .photo-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:8px;
+    overflow:hidden; cursor:pointer; padding:0; font-family:inherit;
+    display:flex; flex-direction:column; box-shadow:var(--shadow);
+    transition:transform .12s, box-shadow .12s;
+  }
+  .photo-card:hover{transform:translateY(-2px); box-shadow:0 4px 8px rgba(28,27,24,0.1), 0 12px 24px rgba(28,27,24,0.08);}
+  .photo-card-image{height:180px; background:var(--surface-2); overflow:hidden;}
+  .photo-card-image img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease;}
+  .photo-card:hover .photo-card-image img{transform:scale(1.06);}
+  .photo-card-caption{
+    padding:20px 16px; background:var(--surface-2); text-align:center;
+    display:flex; align-items:center; justify-content:center; flex:1;
+  }
+  .photo-card-caption span{font-size:15px; font-weight:600; color:var(--text); line-height:1.4;}
+  .photo-card:hover .photo-card-caption span{color:var(--accent);}
+  @media (max-width:860px){ .industries-grid--photo{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:560px){ .industries-grid--photo{grid-template-columns:1fr;} }
+
+  /* ---------- Customers & Partners page ---------- */
+  #page-customers{display:none;}
+  #page-customers.active{display:block;}
+
+  /* ---------- Work photos at customer site page ---------- */
+  #page-workphotos{display:none;}
+  #page-workphotos.active{display:block;}
+  .customers-page{background:var(--bg);}
+  .logo-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:18px;
+  }
+  .logo-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    height:140px; display:flex; align-items:center; justify-content:center; padding:16px;
+    box-shadow:var(--shadow); transition:transform .12s, box-shadow .12s; overflow:hidden;
+  }
+  .logo-card:hover{transform:translateY(-2px); box-shadow:0 4px 8px rgba(28,27,24,0.1), 0 12px 24px rgba(28,27,24,0.08);}
+  .logo-card img{max-width:100%; max-height:100%; object-fit:contain; filter:grayscale(1); opacity:0.72; transition:filter .15s, opacity .15s;}
+  .logo-card:hover img{filter:grayscale(0); opacity:1;}
+  .logo-card--crop{
+    padding:0; background-size:cover; background-repeat:no-repeat;
+    filter:grayscale(1); opacity:0.85; transition:filter .15s, opacity .15s;
+  }
+  .logo-card--crop:hover{filter:grayscale(0); opacity:1;}
+  @media (max-width:560px){ .logo-grid{grid-template-columns:repeat(2, 1fr);} }
+
+  .industry-card-field{display:flex; flex-direction:column; gap:3px;}
+  .industry-card-field dt{font-size:10.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-muted);}
+  .industry-card-field dd{font-size:13px; line-height:1.55; color:var(--text); margin:0;}
+
+  .industry-card-cta{
+    margin-top:auto; padding-top:14px; border-top:1px solid var(--border);
+    font-size:12.5px; font-weight:700; color:var(--accent); display:flex; align-items:center; gap:6px;
+  }
+
+  .industries-more{margin-top:32px; padding:20px 24px; background:var(--surface); border:1px solid var(--border); border-radius:12px;}
+  .industries-more h3{font-size:16px; margin:0 0 12px;}
+  .industries-more-list{margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:10px 28px;}
+  .industries-more-list li{
+    font-size:14px; color:var(--text); padding-left:18px; position:relative;
+  }
+  .industries-more-list li::before{
+    content:""; position:absolute; left:0; top:9px; width:7px; height:7px; border-radius:50%; background:var(--accent);
+  }
+
+  .why-us{margin-top:52px; padding-top:40px; border-top:1px solid var(--border);}
+  .why-us h3{font-size:22px; margin:0 0 24px;}
+  .why-us-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px;}
+  .why-us-item{display:flex; gap:16px; align-items:flex-start;}
+  .why-us-icon{
+    flex:none; width:48px; height:48px; border-radius:10px; background:var(--accent-tint);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .why-us-icon svg{width:24px; height:24px; stroke:var(--accent); fill:none; stroke-width:1.6;}
+  .why-us-item h4{font-size:15px; margin:0 0 6px;}
+  .why-us-item p{font-size:13.5px; line-height:1.65; color:var(--text-muted); margin:0;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-row">
+      <div>
+        <span class="eyebrow">Công ty CP Công nghiệp Nhất Quán</span>
+        <h1 id="pageTitle">Catalog thông số sản phẩm</h1>
+      </div>
+      <div class="subtitle" id="subtitleCount">Dữ liệu thật, lấy trực tiếp từ website chính hãng.</div>
+    </div>
+    <div class="layout-tabs" id="siteTabs">
+      <button class="layout-tab site-tab active" data-page="intro">Giới thiệu<small>Về Nhất Quán</small></button>
+      <button class="layout-tab site-tab" data-page="industries">Ngành nghề<small>Ứng dụng thực tế</small></button>
+      <button class="layout-tab site-tab" data-page="customers">Khách hàng & Đối tác<small>Đã tin dùng</small></button>
+      <button class="layout-tab site-tab" data-page="products">Sản phẩm<small id="productsTabCount">370 sản phẩm, 6 thương hiệu</small></button>
+      <button class="layout-tab site-tab" data-page="workphotos">Hình ảnh tại xưởng khách hàng<small>Thực tế công trình</small></button>
+    </div>
+    <div class="layout-tabs" id="layoutTabs">
+      <button class="layout-tab active" data-view="grid">Lưới sản phẩm<small>Thẻ + thông số rút gọn</small></button>
+      <button class="layout-tab" data-view="table">Bảng thông số<small>So sánh dày đặc theo hãng</small></button>
+      <button class="layout-tab" data-view="sheet">Datasheet<small>Từng sản phẩm, đầy đủ chỉ số</small></button>
+    </div>
+  </div>
+</div>
+
+<section id="page-intro" class="intro-page active">
+  <div class="intro-hero">
+    <div class="intro-hero-inner">
+      <h2 class="intro-hero-title">Cung cấp giải pháp hoàn thiện bề mặt</h2>
+      <p class="intro-hero-motto">
+        <span>Hiệu quả</span><span>Chất lượng</span><span>Uy tín</span><span>Chuyên nghiệp</span>
+      </p>
+      <div class="intro-hero-stats">
+        <div><strong>9</strong><span>Thương hiệu hợp tác</span></div>
+        <div><strong>740+</strong><span>Sản phẩm chính hãng</span></div>
+        <div><strong>100%</strong><span>CO/CQ và nguồn gốc rõ ràng</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-wrap">
+    <div class="intro-grid">
+      <div class="intro-main">
+        <p>Công ty Cổ phần Công Nghiệp Nhất Quán chuyên cung cấp thiết bị phun sơn, máy chà nhám và dụng cụ hoàn thiện bề mặt công nghiệp — phục vụ các doanh nghiệp trong ngành chế biến gỗ nội thất, đồng sơn ô tô, sản xuất composite và xây dựng tại Việt Nam.</p>
+
+        <p>Là đại lý được ủy quyền chính thức bởi các tập đoàn thiết bị công nghiệp hàng đầu như <strong>Mirka</strong> (Phần Lan), <strong>Anest Iwata</strong> (Nhật Bản), <strong>DeVilbiss · Binks · Ransburg</strong> (Mỹ) và <strong>Dynabrade</strong> (Mỹ), Nhất Quán cam kết cung cấp sản phẩm 100% chính hãng, đầy đủ chứng từ CO/CQ, với chính sách bảo hành và hỗ trợ kỹ thuật rõ ràng. Bên cạnh đó, Nhất Quán còn hợp tác thương mại với <strong>Wagner</strong> (Đức) để đa dạng hoá giải pháp cung cấp cho khách hàng.</p>
+
+        <p>Đội ngũ kỹ thuật của Nhất Quán được đào tạo trực tiếp từ nhà sản xuất, có khả năng tư vấn chọn đúng thiết bị cho từng ứng dụng — giúp khách hàng tối ưu chi phí vận hành và nâng cao chất lượng sản phẩm đầu ra.</p>
+
+        <p>Với kinh nghiệm nhiều năm trong ngành, sản phẩm đa dạng và liên tục được đổi mới cùng đội ngũ nhân viên được đào tạo chuyên nghiệp, Nhất Quán hoàn toàn có khả năng đáp ứng mọi yêu cầu khắt khe với giá thành hợp lý nhất.</p>
+
+        <p>Các sản phẩm do Nhất Quán cung cấp đều đảm bảo về mặt chất lượng cũng như hiệu quả cao và được các chủ đầu tư đánh giá cao. Từ đó, chúng tôi luôn nhận được sự tin tưởng của các chủ quản xưởng sản xuất, các tổng thầu xây dựng và các đơn vị thi công làm nhà cung cấp thiết bị trong sản xuất và thi công công trình.</p>
+
+        <blockquote class="intro-quote">
+          <p>Với phương châm <strong>"Chuyên nghiệp – Uy tín – Chất lượng – Hiệu quả"</strong>, chúng tôi tin chắc rằng sự hợp tác thành công với Quý vị là cơ hội để chúng tôi khẳng định thương hiệu trên thị trường. Chúng tôi cam kết trong thời gian tới sẽ không ngừng nâng cao năng lực về mọi mặt để đáp ứng tốt nhất yêu cầu của Quý khách hàng.</p>
+          <cite>Xin chân thành cảm ơn! — Công ty Cổ phần Công nghiệp Nhất Quán</cite>
+        </blockquote>
+
+        <p class="intro-source">Nguồn: <a href="https://nhatquan.vn/nhat-quan-jsc/" target="_blank" rel="noopener">nhatquan.vn/nhat-quan-jsc</a></p>
+      </div>
+
+      <aside class="intro-side">
+        <div class="intro-side-block">
+          <h3>Thương hiệu ủy quyền</h3>
+          <div class="intro-brand-chips">
+            <span class="intro-chip" style="--c:#FDC100;color:#141414">Mirka</span>
+            <span class="intro-chip" style="--c:#007C9C">Anest Iwata</span>
+            <span class="intro-chip" style="--c:#C4300E">DeVilbiss</span>
+            <span class="intro-chip" style="--c:#0E3EA0">Binks</span>
+            <span class="intro-chip" style="--c:#6B6459">Ransburg</span>
+            <span class="intro-chip" style="--c:#FF4712">Dynabrade</span>
+          </div>
+        </div>
+
+        <div class="intro-side-block">
+          <h3>Đối tác thương mại</h3>
+          <div class="intro-brand-chips">
+            <span class="intro-chip" style="--c:#FFCB00;color:#141414">Wagner</span>
+            <span class="intro-chip" style="--c:#2D55AA">Compact Tools</span>
+            <span class="intro-chip" style="--c:#0170C1">Prona</span>
+            <span class="intro-chip" style="--c:#0071BD">Meiji</span>
+            <span class="intro-chip" style="--c:#FF0000">3M</span>
+            <span class="intro-chip" style="--c:#ED0007">Bosch</span>
+            <span class="intro-chip" style="--c:#008396">Makita</span>
+            <span class="intro-chip" style="--c:#BD1B21">Bex</span>
+          </div>
+        </div>
+
+        <div class="intro-contact">
+          <h3>Thông tin liên hệ</h3>
+          <ul class="contact-list">
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M9 12h.01M12 12h.01M15 12h.01M9 9h.01M12 9h.01M15 9h.01"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Tên công ty</span>
+                <span class="contact-value">Công ty Cổ phần Công nghiệp Nhất Quán</span>
+              </span>
+            </li>
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6M7 17h4"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Mã số thuế</span>
+                <span class="contact-value">0313814889</span>
+              </span>
+            </li>
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Địa chỉ</span>
+                <span class="contact-value">52-54 Đường số 8, Cư xá Chu Văn An, Phường Bình Thạnh, TP.HCM</span>
+              </span>
+            </li>
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Văn phòng giao dịch</span>
+                <span class="contact-value">10 Đường 18A, Khu phố 5, Phường Bình Trưng, TP. Hồ Chí Minh (P. An Phú, Quận 2 cũ)</span>
+              </span>
+            </li>
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4.5 4h3.2l1.4 4.4-2 1.6a12.5 12.5 0 0 0 5.9 5.9l1.6-2 4.4 1.4v3.2c0 1-.8 1.8-1.8 1.7C10.5 19.6 4.4 13.5 3.8 6.8 3.7 5.8 4.5 4 4.5 4z"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Hotline</span>
+                <span class="contact-value">
+                  <a href="tel:0908050415">0908.050.415</a> · <a href="tel:0907811767">0907.811.767</a> · <a href="tel:0383236067">038.323.6067</a>
+                </span>
+              </span>
+            </li>
+            <li class="contact-row">
+              <span class="contact-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg></span>
+              <span class="contact-body">
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><a href="mailto:info@nhatquan.vn">info@nhatquan.vn</a> · <a href="mailto:thuy.phan@nhatquan.vn">thuy.phan@nhatquan.vn</a> · <a href="mailto:hoai@nhatquan.vn">hoai@nhatquan.vn</a></span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="page-industries" class="industries-page">
+  <div class="industries-hero">
+    <div class="industries-hero-inner">
+      <h2 class="industries-hero-title">Giải pháp bề mặt hoàn hảo cho mọi ngành công nghiệp</h2>
+      <p class="industries-hero-desc">Nhất Quán phục vụ 12 nhóm ngành ứng dụng, mỗi ngành có yêu cầu thiết bị và vật liệu khác nhau — bấm vào một ngành để xem đúng sản phẩm phù hợp.</p>
+    </div>
+  </div>
+  <div class="industries-wrap">
+    <div class="industries-grid" id="industriesGrid"></div>
+
+    <div class="industries-more">
+      <h3>Ngành nghề khác Nhất Quán phục vụ</h3>
+      <ul class="industries-more-list">
+        <li>Sản xuất kính cường lực</li>
+        <li>Sản xuất gốm sứ</li>
+      </ul>
+    </div>
+
+    <div class="why-us">
+      <h3>Tại sao chọn Nhất Quán?</h3>
+      <div class="why-us-grid">
+        <div class="why-us-item">
+          <div class="why-us-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.2"/><path d="M9 13.5L7 21l5-2.5L17 21l-2-7.5"/></svg></div>
+          <div>
+            <h4>Đối tác chính hãng</h4>
+            <p>Phân phối ủy quyền các thương hiệu hàng đầu: Mirka (Phần Lan), Anest Iwata (Nhật), Dynabrade (Mỹ), Wagner (Đức), DeVilbiss · Binks · Ransburg (Mỹ)...</p>
+          </div>
+        </div>
+        <div class="why-us-item">
+          <div class="why-us-icon"><svg viewBox="0 0 24 24"><path d="M4 5h11a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H10l-4 3v-3H6a2 2 0 0 1-2-2z"/><path d="M8.5 9.5h6M8.5 12.5h4"/></svg></div>
+          <div>
+            <h4>Tư vấn giải pháp</h4>
+            <p>Không chỉ bán thiết bị — chúng tôi đồng hành cùng xưởng sản xuất vượt qua các đợt audit quốc tế về môi trường (VOC) và an toàn lao động.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="page-customers" class="customers-page">
+  <div class="industries-hero">
+    <div class="industries-hero-inner">
+      <h2 class="industries-hero-title">Khách hàng thường xuyên và thân thiết</h2>
+      <p class="industries-hero-desc">Nhất Quán tự hào là nhà cung cấp thiết bị được tin dùng bởi các tập đoàn sản xuất, xưởng gỗ nội thất và doanh nghiệp hàng không trong nước.</p>
+    </div>
+  </div>
+  <div class="industries-wrap">
+    <div class="logo-grid" id="customerLogoGrid"></div>
+  </div>
+</section>
+
+<section id="page-workphotos" class="industries-page">
+  <div class="industries-hero">
+    <div class="industries-hero-inner">
+      <h2 class="industries-hero-title">Hình ảnh tại xưởng khách hàng</h2>
+      <p class="industries-hero-desc">Đội ngũ kỹ thuật Nhất Quán trực tiếp lắp đặt, hướng dẫn vận hành và bảo trì thiết bị tại nhà xưởng của khách hàng.</p>
+    </div>
+  </div>
+  <div class="industries-wrap">
+    <div class="subcat-tabs" id="workPhotosTabs" style="--bc:var(--accent); --bc-on:#FFFFFF; margin-bottom:20px;"></div>
+    <div class="industries-grid industries-grid--photo" id="workPhotosGrid"></div>
+  </div>
+</section>
+
+<div id="page-products">
+  <div class="filter-bar" id="filterBar">
+    <span class="filter-label">Lọc hãng</span>
+  </div>
+
+  <div class="industry-row" id="industryRow">
+    <span class="filter-label">Lọc ngành nghề ứng dụng</span>
+  </div>
+
+  <div class="search-row">
+    <input class="search-input" id="searchInput" type="text" placeholder="Tìm theo tên hoặc mã sản phẩm…">
+  </div>
+
+  <main>
+    <div class="disclaimer"><b>Ghi chú:</b> 370 sản phẩm bên dưới là dữ liệu thật lấy từ mirka.com, binks.com (DeVilbiss + Binks), anest-iwata.vn, wagner-group.com và apac.dynabrade.com. Một số thông số đánh dấu "chưa đầy đủ" do chính trang nguồn không công bố bảng thông số đầy đủ cho model đó.</div>
+
+    <div class="view active" id="view-grid"></div>
+    <div class="view" id="view-table"></div>
+    <div class="view" id="view-sheet"></div>
+  </main>
+</div>
+
+<footer>Nhất Quán — Catalog sản phẩm, dữ liệu tổng hợp từ website chính hãng, cập nhật thủ công định kỳ.</footer>
+
+<script src="data/mirka-products-electric-sanders.js"></script>
+<script src="data/mirka-products-cordless-tools.js"></script>
+<script src="data/mirka-products-dust-extractors.js"></script>
+<script src="data/mirka-products-electric-polishers.js"></script>
+<script src="data/mirka-products-pneumatic-polishers.js"></script>
+<script src="data/mirka-products-pneumatic-sanders.js"></script>
+<script src="data/mirka-polishing.js"></script>
+<script src="data/mirka-abrasives.js"></script>
+<script src="data/mirka-accessories.js"></script>
+<script src="data/mirka-dustextractor-accessories.js"></script>
+<script src="data/mirka-spareparts.js"></script>
+<script src="data/devilbiss-products.js"></script>
+<script src="data/anestiwata-products-hand-spray-gun.js"></script>
+<script src="data/anestiwata-products-wider-series.js"></script>
+<script src="data/anestiwata-products-kiwami-series.js"></script>
+<script src="data/anestiwata-products-air-brush.js"></script>
+<script src="data/anestiwata-products-other-spray-gun.js"></script>
+<script src="data/wagner-products-feeding.js"></script>
+<script src="data/wagner-products-applying.js"></script>
+<script src="data/wagner-products.js"></script>
+<script src="data/dynabrade-products-rebel.js"></script>
+<script src="data/dynabrade-products-dynorbital-extreme.js"></script>
+<script src="data/dynabrade-products.js"></script>
+<script src="data/binks-products-pumps.js"></script>
+<script src="data/binks-products-applicators.js"></script>
+<script src="data/binks-products.js"></script>
+<script src="data/compact-products-orbital-motion.js"></script>
+<script src="data/compact-products-straight-single.js"></script>
+<script src="data/compact-products-water-belt.js"></script>
+<script src="data/compact-products.js"></script>
+<script src="data/oem-accessories.js"></script>
+<script src="data/oem-parts.js"></script>
+<script src="data/prona-products-automatic-spray-gun.js"></script>
+<script src="data/prona-products-manual-spray-gun.js"></script>
+<script src="data/prona-products-spray-equipment.js"></script>
+<script src="data/prona-products-pneumatic-tools.js"></script>
+<script src="data/prona-products.js"></script>
+<script src="data/tonghop-may-cha-nham.js"></script>
+<script src="data/tonghop-thiet-bi-phun-son.js"></script>
+<script src="data/tonghop-linh-kien.js"></script>
+<script src="data/tonghop-products.js"></script>
+
+<script>
+const BRAND_META = [
+  { id:"tonghop",    name:"Tổng hợp",    country:"—",         category:"Đa dụng / nhiều hãng",  color:"#2F7A4D", on:"#FFFFFF" },
+  { id:"mirka",      name:"Mirka",       country:"Phần Lan", category:"Máy chà nhám",         color:"#FDC100", on:"#141414" },
+  { id:"devilbiss",  name:"DeVilbiss",   country:"Mỹ",        category:"Súng phun sơn",         color:"#C4300E", on:"#FFFFFF" },
+  { id:"anestiwata", name:"Anest Iwata", country:"Nhật Bản",  category:"Súng phun sơn",         color:"#007C9C", on:"#FFFFFF" },
+  { id:"dynabrade",  name:"Dynabrade",   country:"Mỹ",        category:"Máy chà nhám khí nén",  color:"#FF4712", on:"#FFFFFF" },
+  { id:"binks",      name:"Binks",       country:"Mỹ",        category:"Bơm & súng phun CN",    color:"#0E3EA0", on:"#FFFFFF" },
+  { id:"compact",    name:"Compact Tools", country:"Nhật Bản", category:"Máy chà nhám khí nén",  color:"#2D55AA", on:"#FFFFFF" },
+  { id:"oem",        name:"OEM",         country:"Sản xuất tại Châu Âu", category:"Phụ kiện & linh kiện thay thế", color:"#4A5568", on:"#FFFFFF" },
+  { id:"prona",      name:"Prona",       country:"Trung Quốc", category:"Súng phun sơn & dụng cụ khí nén", color:"#0170C1", on:"#FFFFFF" },
+  { id:"wagner",     name:"Wagner",      country:"Đức",       category:"Thiết bị phun sơn CN",  color:"#FFCB00", on:"#141414" },
+];
+
+const INDUSTRIES = [
+  { id:"collision",    label:"Sửa chữa va chạm ô tô",         icon:'<path d="M3 16l1.5-4.5A2 2 0 0 1 6.4 10h11.2a2 2 0 0 1 1.9 1.5L21 16"/><path d="M3 16h18v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3z"/><circle cx="7.5" cy="16" r="1.4"/><circle cx="16.5" cy="16" r="1.4"/>', customer:"Garage sửa chữa, gara đồng sơn, trung tâm bảo dưỡng ô tô" },
+  { id:"wood",          label:"Gỗ & nội thất",                  icon:'<path d="M3 6h18v3H3z"/><path d="M3 12h18v3H3z"/><path d="M3 12v6M21 12v6"/>', customer:"Xưởng sản xuất đồ gỗ, nội thất, showroom hoàn thiện gỗ" },
+  { id:"construction",  label:"Xây dựng & hoàn thiện nội thất", icon:'<path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/>', customer:"Nhà thầu xây dựng, đơn vị thi công cải tạo, hoàn thiện nội thất" },
+  { id:"marine",        label:"Tàu thuyền",                     icon:'<path d="M4 15l1.8 4.2a2 2 0 0 0 1.9 1.3h8.6a2 2 0 0 0 1.9-1.3L20 15"/><path d="M6 15V7h9l3 8"/><path d="M9 7V4h3v3"/>', customer:"Xưởng đóng tàu, đơn vị bảo dưỡng và sửa chữa tàu biển" },
+  { id:"automotive",    label:"Giải pháp ngành sản xuất Ô tô",  icon:'<circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7"/>', customer:"Nhà máy lắp ráp ô tô (OEM), nhà cung cấp linh kiện Tier 1" },
+  { id:"composite",     label:"Vật liệu composite",             icon:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/>', customer:"Nhà sản xuất vật liệu composite, thuyền/canoe, cánh quạt" },
+];
+
+function normalizeBrand(raw, brandId, catFallback){
+  const arr = Array.isArray(raw) ? raw : [];
+  return arr.map(p => ({
+    slug: p.slug,
+    name: p.name,
+    model: p.mirkaCode || p.model || p.slug,
+    brandId: brandId,
+    subCategory: p.subCategory || catFallback || "",
+    industries: p.industries || [],
+    shortDesc: p.shortDesc || "",
+    img: p.img || "",
+    specs: p.specs || {},
+    specConfidence: p.specConfidence || "verified",
+  }));
+}
+
+const ALL_PRODUCTS = []
+  .concat(normalizeBrand(window.MIRKA_PRODUCTS, "mirka"))
+  .concat(normalizeBrand(window.DEVILBISS_PRODUCTS, "devilbiss"))
+  .concat(normalizeBrand(window.ANESTIWATA_PRODUCTS, "anestiwata"))
+  .concat(normalizeBrand(window.WAGNER_PRODUCTS, "wagner"))
+  .concat(normalizeBrand(window.DYNABRADE_PRODUCTS, "dynabrade"))
+  .concat(normalizeBrand(window.BINKS_PRODUCTS, "binks"))
+  .concat(normalizeBrand(window.COMPACT_PRODUCTS, "compact"))
+  .concat(normalizeBrand(window.OEM_PRODUCTS, "oem"))
+  .concat(normalizeBrand(window.PRONA_PRODUCTS, "prona"))
+  .concat(normalizeBrand(window.TONGHOP_PRODUCTS, "tonghop"));
+
+document.getElementById("subtitleCount").textContent =
+  `${ALL_PRODUCTS.length} sản phẩm thật · ${BRAND_META.length} thương hiệu — dữ liệu trực tiếp từ website chính hãng.`;
+
+const brandsWithProductsCount = BRAND_META.filter(b => ALL_PRODUCTS.some(p => p.brandId === b.id)).length;
+document.getElementById("productsTabCount").textContent =
+  `${ALL_PRODUCTS.length} sản phẩm, ${brandsWithProductsCount} thương hiệu`;
+
+const state = {
+  activeBrands: new Set(["tonghop"]),
+  activeIndustries: new Set(),
+  activeSubCat: {},
+  query: "",
+};
+
+function subCategoriesForBrand(brandId){
+  const seen = [];
+  ALL_PRODUCTS.filter(p=>p.brandId===brandId).forEach(p=>{
+    if(p.subCategory && !seen.includes(p.subCategory)) seen.push(p.subCategory);
+  });
+  return seen;
+}
+
+function selectSubCat(brandId, cat){
+  state.activeSubCat[brandId] = cat || null;
+  renderAll();
+}
+
+function subCatTabsHTML(brandId){
+  const cats = subCategoriesForBrand(brandId);
+  if(cats.length <= 1) return "";
+  const active = state.activeSubCat[brandId] || null;
+  const esc = s => s.replace(/'/g, "\\'");
+  let html = `<div class="subcat-tabs">`;
+  html += `<button class="subcat-tab${!active ? " on" : ""}" onclick="selectSubCat('${brandId}','')">Tất cả</button>`;
+  cats.forEach(c=>{
+    html += `<button class="subcat-tab${active===c ? " on" : ""}" onclick="selectSubCat('${brandId}','${esc(c)}')">${c}</button>`;
+  });
+  html += `</div>`;
+  return html;
+}
+
+function productsForBrand(brandId){
+  let list = ALL_PRODUCTS.filter(p=>p.brandId === brandId);
+  if(state.activeSubCat[brandId]){
+    list = list.filter(p=>p.subCategory === state.activeSubCat[brandId]);
+  }
+  if(state.activeIndustries.size > 0){
+    list = list.filter(p=>p.industries.some(i=>state.activeIndustries.has(i)));
+  }
+  if(state.query){
+    const q = state.query.toLowerCase();
+    list = list.filter(p=> p.name.toLowerCase().includes(q) || p.model.toLowerCase().includes(q));
+  }
+  return list;
+}
+
+function renderFilters(){
+  const bar = document.getElementById("filterBar");
+  bar.querySelectorAll(".chip").forEach(el=>el.remove());
+  BRAND_META.forEach(b=>{
+    const count = ALL_PRODUCTS.filter(p=>p.brandId===b.id).length;
+    const chip = document.createElement("button");
+    chip.className = "chip" + (state.activeBrands.has(b.id) ? " on" : "");
+    chip.style.setProperty("--dot", b.color);
+    chip.innerHTML = `<span class="dot"></span>${b.name}<span class="count">${count}</span>`;
+    chip.addEventListener("click", ()=>{
+      if(state.activeBrands.has(b.id)) state.activeBrands.delete(b.id);
+      else state.activeBrands.add(b.id);
+      renderFilters(); renderAll();
+    });
+    bar.appendChild(chip);
+  });
+
+  const industryRow = document.getElementById("industryRow");
+  industryRow.querySelectorAll(".industry-chip").forEach(el=>el.remove());
+  INDUSTRIES.forEach(ind=>{
+    const count = ALL_PRODUCTS.filter(p=>p.industries.includes(ind.id)).length;
+    const chip = document.createElement("button");
+    chip.className = "industry-chip" + (state.activeIndustries.has(ind.id) ? " on" : "");
+    chip.innerHTML = `<svg viewBox="0 0 24 24">${ind.icon}</svg><span>${ind.label}</span><span class="count">${count}</span>`;
+    chip.addEventListener("click", ()=>{
+      if(state.activeIndustries.has(ind.id)) state.activeIndustries.delete(ind.id);
+      else state.activeIndustries.add(ind.id);
+      renderFilters(); renderAll();
+    });
+    industryRow.appendChild(chip);
+  });
+}
+
+function visibleBrands(){
+  return BRAND_META.filter(b=>state.activeBrands.has(b.id));
+}
+
+function imgOrPlaceholder(p){
+  if(p.img){
+    return `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.closest('.card-thumb,.sheet-media').classList.add('img-error'); this.remove();">`;
+  }
+  return `<span class="ph">Chưa có ảnh</span>`;
+}
+
+function renderGrid(){
+  const root = document.getElementById("view-grid");
+  root.innerHTML = "";
+  visibleBrands().forEach(b=>{
+    const totalForBrand = ALL_PRODUCTS.filter(p=>p.brandId===b.id).length;
+    if(totalForBrand === 0) return;
+    const products = productsForBrand(b.id);
+    const section = document.createElement("section");
+    section.className = "brand-section";
+    section.style.setProperty("--bc", b.color);
+    section.style.setProperty("--bc-on", b.on);
+    section.innerHTML = `
+      <div class="brand-head">
+        <div class="brand-head-left">
+          <div class="brand-name">${b.name}</div>
+          <div class="brand-meta">${b.country} · ${b.category}</div>
+        </div>
+        <div class="brand-count">${products.length} sản phẩm</div>
+      </div>
+      ${subCatTabsHTML(b.id)}
+      ${products.length === 0 ? `<div class="disclaimer">Không có sản phẩm nào khớp với bộ lọc hiện tại.</div>` : `<div class="card-grid">
+        ${products.map(p=>{
+          const specEntries = Object.entries(p.specs).slice(0,4);
+          return `
+          <div class="card">
+            <div class="card-cat">${p.subCategory || b.category}</div>
+            <div class="card-thumb">${imgOrPlaceholder(p)}</div>
+            <div>
+              <div class="card-title">${p.name}</div>
+              <div class="card-model">Mã: ${p.model}</div>
+            </div>
+            <div class="card-specs">
+              ${specEntries.map(([k,v])=>`<div><span class="spec-k">${k}</span><span class="spec-v num">${v}</span></div>`).join("")}
+            </div>
+          </div>`;
+        }).join("")}
+      </div>`}
+    `;
+    root.appendChild(section);
+  });
+}
+
+function renderTable(){
+  const root = document.getElementById("view-table");
+  root.innerHTML = "";
+  visibleBrands().forEach(b=>{
+    const totalForBrand = ALL_PRODUCTS.filter(p=>p.brandId===b.id).length;
+    if(totalForBrand === 0) return;
+    const products = productsForBrand(b.id);
+    // Union of spec keys across products in this brand's filtered set, capped to keep table readable
+    const keySet = [];
+    products.forEach(p=>Object.keys(p.specs).forEach(k=>{ if(!keySet.includes(k)) keySet.push(k); }));
+    const labels = keySet.slice(0,8);
+    const section = document.createElement("section");
+    section.className = "brand-section";
+    section.style.setProperty("--bc", b.color);
+    section.style.setProperty("--bc-on", b.on);
+    section.innerHTML = `
+      <div class="brand-head">
+        <div class="brand-head-left">
+          <div class="brand-name">${b.name}</div>
+          <div class="brand-meta">${b.country} · ${b.category}</div>
+        </div>
+        <div class="brand-count">${products.length} sản phẩm</div>
+      </div>
+      ${subCatTabsHTML(b.id)}
+      ${products.length === 0 ? `<div class="disclaimer">Không có sản phẩm nào khớp với bộ lọc hiện tại.</div>` : `<div class="spec-table-wrap">
+        <table class="spec-table">
+          <thead><tr><th>Sản phẩm</th><th>Mã</th>${labels.map(l=>`<th>${l}</th>`).join("")}</tr></thead>
+          <tbody>
+            ${products.map(p=>`
+              <tr>
+                <td>${p.name}</td>
+                <td>${p.model}</td>
+                ${labels.map(l=>`<td class="num">${p.specs[l] !== undefined ? p.specs[l] : "—"}</td>`).join("")}
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>`}
+    `;
+    root.appendChild(section);
+  });
+}
+
+function renderSheet(){
+  const root = document.getElementById("view-sheet");
+  root.innerHTML = "";
+  visibleBrands().forEach(b=>{
+    const totalForBrand = ALL_PRODUCTS.filter(p=>p.brandId===b.id).length;
+    if(totalForBrand === 0) return;
+    const products = productsForBrand(b.id);
+    const section = document.createElement("section");
+    section.className = "brand-section";
+    section.style.setProperty("--bc", b.color);
+    section.style.setProperty("--bc-on", b.on);
+    section.innerHTML = `
+      <div class="brand-head">
+        <div class="brand-head-left">
+          <div class="brand-name">${b.name}</div>
+          <div class="brand-meta">${b.country} · ${b.category}</div>
+        </div>
+        <div class="brand-count">${products.length} sản phẩm</div>
+      </div>
+      ${subCatTabsHTML(b.id)}
+      ${products.length === 0 ? `<div class="disclaimer">Không có sản phẩm nào khớp với bộ lọc hiện tại.</div>` : `<div class="sheet-list">
+        ${products.map(p=>`
+          <div class="sheet">
+            <div class="sheet-media">
+              ${imgOrPlaceholder(p)}
+              <div class="sheet-media-label">${p.model}</div>
+            </div>
+            <div class="sheet-body">
+              <div class="sheet-top">
+                <div>
+                  <div class="sheet-name">${p.name}</div>
+                  <div class="sheet-model">Mã sản phẩm: ${p.model}</div>
+                </div>
+                <div class="sheet-tag">${b.name}</div>
+              </div>
+              ${p.shortDesc ? `<div class="sheet-desc">${p.shortDesc}</div>` : ""}
+              <div class="sheet-specs">
+                ${Object.entries(p.specs).map(([k,v])=>`
+                  <div class="sheet-spec">
+                    <span class="spec-k">${k}</span>
+                    <span class="spec-v num">${v}</span>
+                  </div>
+                `).join("")}
+              </div>
+              ${p.specConfidence === "partial" ? `<div class="partial-flag">* Thông số chưa đầy đủ — trang nguồn không công bố bảng kỹ thuật đầy đủ cho model này.</div>` : ""}
+            </div>
+          </div>
+        `).join("")}
+      </div>`}
+    `;
+    root.appendChild(section);
+  });
+}
+
+function renderAll(){
+  renderGrid(); renderTable(); renderSheet();
+  ["view-grid","view-table","view-sheet"].forEach(id=>{
+    const root = document.getElementById(id);
+    if(root.children.length === 0){
+      root.innerHTML = `<div class="disclaimer">Không có sản phẩm nào khớp với bộ lọc/tìm kiếm hiện tại.</div>`;
+    }
+  });
+}
+
+document.getElementById("layoutTabs").addEventListener("click", (e)=>{
+  const btn = e.target.closest(".layout-tab");
+  if(!btn) return;
+  document.querySelectorAll("#layoutTabs .layout-tab").forEach(t=>t.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("view-" + btn.dataset.view).classList.add("active");
+});
+
+const PAGE_TITLES = {
+  intro: "Giới thiệu công ty",
+  industries: "Ngành nghề",
+  customers: "Khách hàng & Đối tác",
+  products: "Catalog thông số sản phẩm",
+  workphotos: "Hình ảnh tại xưởng khách hàng",
+};
+
+const WORK_PHOTOS = [
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-1.jpg", caption:"Triệu Phú Lộc — dây chuyền sơn phủ bề mặt gỗ" },
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-2.jpg", caption:"Triệu Phú Lộc — hệ thống bơm màng Wagner cấp sơn" },
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-3.jpg", caption:"Triệu Phú Lộc — kỹ thuật Nhất Quán lắp đặt bơm Binks" },
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-4.jpg", caption:"Triệu Phú Lộc — kỹ thuật Nhất Quán kiểm tra hệ thống bơm sơn Wagner" },
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-5.jpg", caption:"Triệu Phú Lộc — dàn bơm màng Wagner tại xưởng sơn" },
+  { group:"Triệu Phú Lộc", photo:"img/khach-hang-lam-viec/trieu-phu-loc-6.jpg", caption:"Triệu Phú Lộc — công nhân hoàn thiện bề mặt chi tiết gỗ uốn" },
+  { group:"Viglacera", photo:"img/khach-hang-lam-viec/viglacera-1.jpg", caption:"Viglacera — dây chuyền phun men sứ vệ sinh" },
+  { group:"Viglacera", photo:"img/khach-hang-lam-viec/viglacera-2.jpg", caption:"Viglacera — cabin robot phun men tự động" },
+  { group:"Viglacera", photo:"img/khach-hang-lam-viec/viglacera-3.jpg", caption:"Viglacera — thành phẩm sứ vệ sinh sau nung" },
+];
+
+const WORK_PHOTO_CUSTOMERS = ["Triệu Phú Lộc", "Sài Gòn River", "Tân Hòa", "Viglacera"];
+
+let activeWorkPhotoGroup = null;
+
+function workPhotoGroups(){
+  const seen = [...WORK_PHOTO_CUSTOMERS];
+  WORK_PHOTOS.forEach(p=>{ if(p.group && !seen.includes(p.group)) seen.push(p.group); });
+  return seen;
+}
+
+function selectWorkPhotoGroup(group){
+  activeWorkPhotoGroup = group || null;
+  renderWorkPhotosGrid();
+}
+
+function renderWorkPhotosGrid(){
+  const tabsEl = document.getElementById("workPhotosTabs");
+  const grid = document.getElementById("workPhotosGrid");
+  const groups = workPhotoGroups();
+
+  if(groups.length > 1){
+    let tabsHtml = `<button class="subcat-tab${!activeWorkPhotoGroup ? " on" : ""}" onclick="selectWorkPhotoGroup('')">Tất cả</button>`;
+    groups.forEach(g=>{
+      tabsHtml += `<button class="subcat-tab${activeWorkPhotoGroup===g ? " on" : ""}" onclick="selectWorkPhotoGroup('${g.replace(/'/g,"\\'")}')">${g}</button>`;
+    });
+    tabsEl.innerHTML = tabsHtml;
+    tabsEl.style.display = "";
+  } else {
+    tabsEl.innerHTML = "";
+    tabsEl.style.display = "none";
+  }
+
+  const list = activeWorkPhotoGroup ? WORK_PHOTOS.filter(p=>p.group === activeWorkPhotoGroup) : WORK_PHOTOS;
+
+  if(list.length === 0){
+    grid.innerHTML = `<div class="disclaimer">Chưa có hình ảnh — sẽ được cập nhật sớm.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(p => `
+    <div class="photo-card">
+      <div class="photo-card-image"><img src="${p.photo}" alt="${p.caption}" loading="lazy" style="object-position:${p.pos || "50% 50%"}"></div>
+      <div class="photo-card-caption"><span>${p.caption}</span></div>
+    </div>
+  `).join("");
+}
+
+const CUSTOMER_LOGOS = [
+  { name:"Viettel", file:"viettel.png", scale:135 },
+  { name:"AA Corporation", file:"aa.jpeg" },
+  { name:"THACO", file:"thaco.png" },
+  { name:"Saigon River Factory", file:"saigon-river-factory.jpg" },
+  { name:"VASCO", file:"vasco.png" },
+  { name:"Rochdale Spears", file:"rs.png", scale:150 },
+  { name:"Minh Dương Furniture", file:"minhduong.jpg" },
+  { name:"Theodore Alexander", file:"theodore-alexander.png" },
+  { name:"Brothers Furniture", file:"brothers-furniture.png" },
+  { name:"Triệu Phú Lộc Furniture", file:"trieu-phu-loc.png" },
+  { name:"NTN", file:"ntn.png" },
+  { name:"Casta Kitchen Cabinet", file:"casta.jpeg" },
+  { name:"Happy Furniture", file:"happy-furniture.png" },
+  { name:"ABB", file:"abb.png" },
+  { name:"THT Century", file:"theky.png", scale:150 },
+  { name:"Hòa Phát", file:"hoaphat.png" },
+  { name:"Hyundai", file:"hyundai.png" },
+  { name:"Mitsubishi", file:"mitsubishi.jpg" },
+  { name:"Kia", file:"kia.png" },
+  { name:"Phúc Thắng Fine Furniture", file:"phucthang.png", scale:150 },
+  { name:"VinFast", file:"vinfast.jpg" },
+  { name:"Mazda", file:"mazda.png" },
+  { name:"Mercedes-Benz", file:"mercedes.png" },
+  { name:"Porsche", file:"porsche.png" },
+];
+
+function renderCustomerLogos(){
+  const grid = document.getElementById("customerLogoGrid");
+  const dir = encodeURIComponent("Logo khách hàng");
+  grid.innerHTML = CUSTOMER_LOGOS.map(l => {
+    if(l.crop){
+      return `
+        <div class="logo-card logo-card--crop" role="img" aria-label="${l.name}"
+             style="background-image:url('img/${dir}/${l.file}'); background-position:${l.crop};"></div>
+      `;
+    }
+    return `
+      <div class="logo-card">
+        <img src="img/${dir}/${l.file}" alt="${l.name}" loading="lazy" style="max-width:${l.scale || 100}%; max-height:${l.scale || 100}%">
+      </div>
+    `;
+  }).join("");
+}
+
+function setPage(page){
+  document.querySelectorAll(".site-tab").forEach(t=>t.classList.remove("active"));
+  document.querySelector(`.site-tab[data-page="${page}"]`).classList.add("active");
+  document.getElementById("page-intro").classList.toggle("active", page === "intro");
+  document.getElementById("page-industries").classList.toggle("active", page === "industries");
+  document.getElementById("page-customers").classList.toggle("active", page === "customers");
+  document.getElementById("page-products").classList.toggle("active", page === "products");
+  document.getElementById("page-workphotos").classList.toggle("active", page === "workphotos");
+  document.getElementById("layoutTabs").style.display = page === "products" ? "" : "none";
+  document.getElementById("pageTitle").textContent = PAGE_TITLES[page];
+  window.scrollTo(0, 0);
+}
+
+document.getElementById("siteTabs").addEventListener("click", (e)=>{
+  const btn = e.target.closest(".site-tab");
+  if(!btn) return;
+  setPage(btn.dataset.page);
+});
+
+const SOLUTIONS = [
+  {
+    id:"wood_construction",
+    label:"Ngành Gỗ & Nội thất",
+    subLabel:"Wood & Construction",
+    color:"#8B5E34",
+    photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/wood/mirka-wood-sanding-banner-bench-2200-1238.jpg?tr=w-800",
+    icon:'<path d="M12 3l5 7h-3l4 6h-3.5l2.5 5H6l2.5-5H5l4-6H6z"/><path d="M12 21v-3"/>',
+    filterIds:["wood","construction"],
+    solution:"Hệ thống chà nhám Mirka (đạt chuẩn bụi mịn EN 60335-2-69) và thiết bị phun sơn HVLP (Anest Iwata, Binks) giúp kiểm soát VOC tối ưu.",
+    application:"Sản xuất đồ gỗ xuất khẩu, nội thất cao cấp, hoàn thiện công trình kiến trúc.",
+    value:"Đạt chuẩn audit quốc tế (IWAY, SMETA, FSC) cho các đơn hàng xuất khẩu khó tính (EU/Mỹ).",
+  },
+  {
+    id:"automotive_vehicle",
+    label:"Ngành Ô tô & Phương tiện",
+    subLabel:"Automotive & Vehicle Manufacturing",
+    color:"#1D5FA8",
+    photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/5-automotive-industry/applications/mirka-vehicle-manufacturing-automotive-industry.jpg?tr=w-800",
+    icon:'<path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2a2 2 0 0 1 1.9 1.5L20 16"/><path d="M4 16h16v2.5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1V18H7.5v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><circle cx="8" cy="16" r="1.6"/><circle cx="16" cy="16" r="1.6"/>',
+    filterIds:["collision","automotive"],
+    solution:"Dụng cụ khí nén Dynabrade bền bỉ và súng phun sơn Anest Iwata/Wagner chuyên dụng cho độ bóng hoàn hảo.",
+    application:"Sửa chữa va chạm (Collision Repair), sản xuất thân vỏ và linh kiện hệ truyền động (Powertrain).",
+    value:"Tối ưu quy trình refinishing, tiết kiệm vật tư và rút ngắn thời gian xử lý bề mặt.",
+  },
+  {
+    id:"metalworking_robotic",
+    label:"Ngành Kim loại & Cơ khí chính xác",
+    subLabel:"Metalworking & Robotic",
+    color:"#4A5568",
+    photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/8-tool-manufacturing/industry/Mirka-Cafro-tool-manufacturing-main-image-2200-1238.jpg?tr=w-800",
+    icon:'<circle cx="7" cy="6" r="1.8"/><path d="M7 7.8V12l6 2.5V20"/><circle cx="13" cy="20" r="1.8"/><path d="M4 20h1.2M12 4h2"/>',
+    filterIds:[],
+    solution:"Công cụ gia công kim loại, sản xuất khuôn mẫu và robot phun sơn tự động kết hợp.",
+    application:"Chế tạo kim loại tấm, khung tủ, linh kiện máy móc, dây chuyền sản xuất tự động.",
+    value:"Tăng độ chính xác, giảm thiểu sai sót do con người và tối ưu hóa năng suất sản xuất hàng loạt.",
+  },
+  {
+    id:"aerospace_energy_marine",
+    label:"Ngành Công nghiệp Chuyên dụng cao cấp",
+    subLabel:"Aerospace, Energy, Marine",
+    color:"#0F6B5C",
+    photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/marine/mirka-marine-yacht-sanding-banner-2200-1238-.jpg?tr=w-800",
+    icon:'<path d="M3 11l18-8-8 18-2-8-8-2z"/>',
+    filterIds:["marine","composite"],
+    solution:"Thiết bị chà nhám composite chuyên dụng cho bề mặt nhạy cảm và công cụ bảo trì tua-bin gió.",
+    application:"Hàng không vũ trụ, sản xuất/bảo trì năng lượng gió, hoàn thiện bề mặt tàu thuyền.",
+    value:"Đáp ứng các tiêu chuẩn kỹ thuật khắt khe, đảm bảo độ bền bề mặt trong môi trường khắc nghiệt.",
+  },
+];
+
+const MIRKA_INDUSTRIES = [
+  { label:"Chế biến gỗ", filterId:"wood", photo:"img/wood-processing.jpg", pos:"58% 55%" },
+  { label:"Giải pháp ngành sản xuất Ô tô", filterId:"automotive", photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/5-automotive-industry/applications/mirka-vehicle-manufacturing-automotive-industry.jpg?tr=w-720" },
+  { label:"Hàng không", filterId:null, photo:"img/aerospace.jpg", pos:"45% 48%" },
+  { label:"Gia công kim loại", filterId:null, photo:"img/metalworking.jpg", pos:"72% 45%" },
+  { label:"Xây dựng, cải tạo & hoàn thiện nội thất", filterId:"construction", photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/cd/mirka-construction-renovation-decoration.jpg?tr=w-720" },
+  { label:"Hoàn thiện bề mặt tàu thuyền", filterId:"marine", photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/marine/mirka-marine-yacht-sanding-banner-2200-1238-.jpg?tr=w-720" },
+  { label:"Sửa chữa va chạm ô tô", filterId:"collision", photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/collision-repair/sander-tool-mirka-collision-repair-2200-1238/?tr=w-720" },
+  { label:"Chà nhám & đánh bóng vật liệu composite", filterId:"composite", photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/9a-solutions/composite/sanding_composite_mirka_pros_2200x1238.jpg?tr=w-720" },
+  { label:"Sản xuất dụng cụ", filterId:null, photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/8-tool-manufacturing/industry/Mirka-Cafro-tool-manufacturing-main-image-2200-1238.jpg?tr=w-720" },
+  { label:"Hoàn thiện bề mặt điện gió", filterId:null, photo:"https://img.mirka.com/contenthubprod/globalassets/mirkacom/9a-solutions/composite/windpower_sanding_closeup_2200x1238.jpg?tr=w-720" },
+  { label:"Sơn tĩnh điện", filterId:null, photo:"img/powder-coating.jpg", pos:"50% 40%" },
+  { label:"Ngành dược và thực phẩm", filterId:null, photo:"img/pharma-lab.jpg", pos:"78% 55%" },
+];
+
+function renderIndustriesGrid(){
+  const grid = document.getElementById("industriesGrid");
+  grid.innerHTML = "";
+  SOLUTIONS.forEach(sol=>{
+    const count = sol.filterIds.length
+      ? ALL_PRODUCTS.filter(p=>p.industries.some(i=>sol.filterIds.includes(i))).length
+      : null;
+    const card = document.createElement("button");
+    card.className = "industry-card";
+    card.style.setProperty("--ic", sol.color);
+    card.innerHTML = `
+      <div class="industry-card-image">
+        <img src="${sol.photo}" alt="${sol.label}" loading="lazy">
+        <span class="industry-card-icon-badge"><svg viewBox="0 0 24 24">${sol.icon}</svg></span>
+      </div>
+      <div class="industry-card-body">
+        <div>
+          <p class="industry-card-label">${sol.label}</p>
+          ${count !== null ? `<div class="industry-card-count">${count} sản phẩm phù hợp</div>` : `<div class="industry-card-count">${sol.subLabel}</div>`}
+        </div>
+        <dl class="industry-card-field">
+          <dt>Giải pháp</dt><dd>${sol.solution}</dd>
+        </dl>
+        <dl class="industry-card-field">
+          <dt>Ứng dụng</dt><dd>${sol.application}</dd>
+        </dl>
+        <dl class="industry-card-field">
+          <dt>Giá trị</dt><dd>${sol.value}</dd>
+        </dl>
+        <div class="industry-card-cta">Xem sản phẩm liên quan →</div>
+      </div>
+    `;
+    card.addEventListener("click", ()=>{
+      if(sol.filterIds.length){
+        state.activeIndustries = new Set(sol.filterIds);
+      } else {
+        state.activeIndustries = new Set();
+      }
+      renderFilters(); renderAll();
+      setPage("products");
+    });
+    grid.appendChild(card);
+  });
+}
+
+function renderMirkaIndustriesGrid(){
+  const grid = document.getElementById("industriesGrid");
+  grid.innerHTML = "";
+  grid.classList.add("industries-grid--photo");
+  MIRKA_INDUSTRIES.forEach(ind=>{
+    const card = document.createElement("button");
+    card.className = "photo-card";
+    card.innerHTML = `
+      <div class="photo-card-image"><img src="${ind.photo}" alt="${ind.label}" loading="lazy" style="object-position:${ind.pos || "50% 50%"}"></div>
+      <div class="photo-card-caption"><span>${ind.label}</span></div>
+    `;
+    card.addEventListener("click", ()=>{
+      // Ngành có filterId thì lọc đúng ngành đó; ngành chưa có filterId thì mở toàn bộ danh mục
+      // sản phẩm (không lọc) — để mọi thẻ đều bấm được, đồng bộ hành vi.
+      state.activeIndustries = ind.filterId ? new Set([ind.filterId]) : new Set();
+      renderFilters(); renderAll();
+      setPage("products");
+    });
+    grid.appendChild(card);
+  });
+}
+
+renderMirkaIndustriesGrid();
+renderCustomerLogos();
+renderWorkPhotosGrid();
+
+const urlBrand = new URLSearchParams(location.search).get("brand");
+if (urlBrand && BRAND_META.some(b => b.id === urlBrand)) {
+  state.activeBrands = new Set([urlBrand]);
+  renderFilters();
+  renderAll();
+  setPage("products");
+} else {
+  setPage("intro");
+}
+
+let searchDebounce;
+document.getElementById("searchInput").addEventListener("input", (e)=>{
+  clearTimeout(searchDebounce);
+  const val = e.target.value;
+  searchDebounce = setTimeout(()=>{ state.query = val.trim(); renderAll(); }, 150);
+});
+
+renderFilters();
+renderAll();
+</script>
+</body>
+</html>
