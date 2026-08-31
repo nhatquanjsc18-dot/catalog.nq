@@ -44,6 +44,15 @@ npm run build:data
 
 rồi commit các file JSON mới trong `site/data/`.
 
+**⚠️ CHỈ chạy `build:data` khi ở LOCAL trong thư mục dự án gốc** (nơi có thư mục
+`web/` nằm cạnh `site/`). Script này đọc `../web/catalog.html` và `../web/data/*.js`
+— hai thứ đó **không nằm trong repo Git** (chỉ tồn tại trên máy dev gốc), nên nếu
+Hostinger (hoặc bất kỳ máy chủ deploy nào) chạy lệnh này sẽ báo lỗi
+`ENOENT: no such file or directory ... web/catalog.html` và **build sẽ thất bại**.
+Trên Hostinger, **không đặt Build command là `npm run build:data`** — để trống,
+hoặc dùng `npm run build` (script no-op an toàn, không làm gì cả vì site đã build
+sẵn, mọi file cần thiết đã có trong `site/data/*.json` và `site/catalog/`).
+
 **Lưu ý quan trọng:** `site/catalog/` hiện là **bản sao độc lập** của `web/`. Nếu bạn
 sửa dữ liệu sản phẩm, cần đồng bộ cả hai nơi (hoặc chuyển hẳn sang chỉ dùng một
 nguồn — xem mục "Việc cần làm tiếp" bên dưới).
@@ -76,6 +85,10 @@ git push -u origin main
 - **Hosting Node.js (nếu gói Hostinger hỗ trợ):** trỏ entry point vào `server.js`,
   set biến môi trường `PORT` theo Hostinger cấp, chạy `npm install` (không có
   dependency ngoài nên bước này gần như tức thời) rồi start bằng `npm start`.
+- **Nếu hPanel/Git deploy yêu cầu nhập "Build command":** để trống, hoặc điền
+  `npm run build`. **KHÔNG điền `npm run build:data`** — script đó phụ thuộc thư
+  mục `web/` chỉ có trên máy dev gốc, không có trong repo, sẽ làm bước build
+  thất bại với lỗi `ENOENT ... web/catalog.html`.
 
 ## Việc cần làm tiếp (chưa làm trong lượt này)
 

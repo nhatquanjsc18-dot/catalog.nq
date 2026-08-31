@@ -4,6 +4,7 @@
   "description": "Nhat Quan Industrial - ecommerce homepage + full product catalog",
   "private": true,
   "scripts": {
+    "build": "echo Static site — nothing to compile. Deployed files are already built.",
     "build:data": "node scripts/build-data.js && node scripts/pick-featured.js",
     "dev": "node server.js",
     "start": "node server.js"

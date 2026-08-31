@@ -11,6 +11,18 @@ const DATA_DIR = path.join(ROOT, "web", "data");
 const CATALOG_HTML = path.join(ROOT, "web", "catalog.html");
 const OUT_DIR = path.join(__dirname, "..", "data");
 
+// This script only works when run INSIDE the original project folder (the one
+// with a sibling "web/" directory holding the master scraped data). That
+// folder is intentionally NOT committed to this repo — site/data/*.json is
+// already the built output. On a deploy target (e.g. Hostinger) "web/" won't
+// exist, so skip instead of crashing the build.
+if (!fs.existsSync(CATALOG_HTML)) {
+  console.log(`build-data.js: "${CATALOG_HTML}" not found — skipping (this is expected on a`);
+  console.log("deploy target; site/data/*.json already contains the built output; this script");
+  console.log("is only meant to be run locally inside the original project folder).");
+  process.exit(0);
+}
+
 const html = fs.readFileSync(CATALOG_HTML, "utf8");
 const scriptFiles = [...html.matchAll(/<script src="data\/([^"]+)"><\/script>/g)].map(m => m[1]);
 
