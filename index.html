@@ -201,6 +201,23 @@
 .brandmark .logo-img{height:40px;width:auto;display:block;}
   .logo-chip{background:#fff;padding:10px 14px;border-radius:10px;display:inline-flex;}
   .logo-chip .logo-img{height:34px;}
+
+  .service-link{background:none;border:none;padding:0;cursor:pointer;text-align:left;font:inherit;}
+  .form-modal-overlay{position:fixed;inset:0;background:rgba(8,20,32,.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:100;}
+  .form-modal-overlay.open{display:flex;}
+  .form-modal{background:var(--panel);border-radius:16px;padding:32px;max-width:460px;width:100%;position:relative;max-height:90vh;overflow-y:auto;}
+  .form-modal-close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:24px;line-height:1;color:var(--ink-soft);cursor:pointer;padding:6px;}
+  .form-modal h3{font-size:22px;margin-bottom:8px;padding-right:20px;}
+  .form-modal p.desc{color:var(--ink-soft);font-size:14px;line-height:1.55;margin-bottom:22px;}
+  .form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .form-field label{font-size:12.5px;font-weight:700;color:var(--ink);}
+  .form-field input,.form-field textarea{border:1.5px solid var(--line-strong);border-radius:8px;padding:10px 12px;font:inherit;font-size:14px;color:var(--ink);background:var(--panel);}
+  .form-field input:focus,.form-field textarea:focus{outline:none;border-color:var(--orange);}
+  .form-field textarea{resize:vertical;min-height:80px;}
+  .form-submit-btn{width:100%;margin-top:6px;}
+  .form-status{font-size:13.5px;margin-top:12px;min-height:18px;}
+  .form-status.ok{color:#1e7a3e;}
+  .form-status.err{color:#c23b3b;}
 </style>
 
 <div class="utilitybar">
@@ -341,7 +358,7 @@
           <svg class="service-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <h3>Tư vấn kỹ thuật tại xưởng</h3>
           <p>Khảo sát dây chuyền thực tế, đề xuất thiết bị theo vật liệu và bề mặt cần xử lý.</p>
-          <a class="service-link" href="mailto:info@nhatquan.vn">Đặt lịch khảo sát →</a>
+          <button type="button" class="service-link" data-open-form="survey">Đặt lịch khảo sát →</button>
         </div>
       </div>
       <div class="service-card">
@@ -350,7 +367,7 @@
           <svg class="service-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
           <h3>Bảo trì &amp; hoàn thiện bề mặt</h3>
           <p>Hướng dẫn vận hành, bảo trì thiết bị và tối ưu quy trình hoàn thiện sản phẩm.</p>
-          <a class="service-link" href="mailto:info@nhatquan.vn">Liên hệ hỗ trợ →</a>
+          <button type="button" class="service-link" data-open-form="support">Liên hệ hỗ trợ →</button>
         </div>
       </div>
     </div>
@@ -408,7 +425,7 @@
       </div>
       <div class="foot-col"><h4>Thương hiệu</h4><ul><li><a href="#">Mirka</a></li><li><a href="#">DeVilbiss</a></li><li><a href="#">Anest Iwata</a></li><li><a href="#">Wagner</a></li></ul></div>
       <div class="foot-col"><h4>Danh mục</h4><ul><li><a href="#">Súng phun sơn</a></li><li><a href="#">Máy chà nhám</a></li><li><a href="#">Sơn tĩnh điện</a></li><li><a href="#">Bơm &amp; cấp liệu</a></li></ul></div>
-      <div class="foot-col"><h4>Liên hệ</h4><ul><li><a href="mailto:info@nhatquan.vn">info@nhatquan.vn</a></li><li><a href="#">Bản đồ chỉ đường</a></li></ul></div>
+      <div class="foot-col"><h4>Liên hệ</h4><ul><li><a href="mailto:info@nhatquan.vn">info@nhatquan.vn</a></li><li><a href="tel:0908050415">0908 050 415</a></li><li><a href="https://maps.google.com/?q=10+Duong+so+18A,+Khu+pho+5,+Phuong+Binh+Trung,+TP.HCM" target="_blank" rel="noopener">10 Đường số 18A, P. Bình Trưng, TP.HCM</a></li></ul></div>
     </div>
     <div class="nameplate">
       <span>© Công ty Cổ phần Công nghiệp Nhất Quán</span>
@@ -416,6 +433,39 @@
     </div>
   </div>
 </footer>
+
+
+<div class="form-modal-overlay" id="formModalOverlay">
+  <div class="form-modal" role="dialog" aria-modal="true" aria-labelledby="formModalTitle">
+    <button type="button" class="form-modal-close" id="formModalClose" aria-label="Đóng">&times;</button>
+    <h3 id="formModalTitle">Đặt lịch khảo sát tại xưởng</h3>
+    <p class="desc" id="formModalDesc">Để lại thông tin, kỹ thuật viên Nhất Quán sẽ liên hệ hẹn lịch khảo sát dây chuyền của bạn.</p>
+    <form id="leadForm">
+      <input type="hidden" name="access_key" value="">
+      <input type="hidden" name="subject" value="">
+      <input type="hidden" name="from_name" value="Website Nhất Quán">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-field">
+        <label for="leadName">Họ tên *</label>
+        <input type="text" id="leadName" name="name" required>
+      </div>
+      <div class="form-field">
+        <label for="leadPhone">Số điện thoại *</label>
+        <input type="tel" id="leadPhone" name="phone" required>
+      </div>
+      <div class="form-field">
+        <label for="leadEmail">Email</label>
+        <input type="email" id="leadEmail" name="email">
+      </div>
+      <div class="form-field">
+        <label for="leadMessage">Nội dung *</label>
+        <textarea id="leadMessage" name="message" required></textarea>
+      </div>
+      <button type="submit" class="cta-btn form-submit-btn">Gửi yêu cầu</button>
+      <p class="form-status" id="formStatus"></p>
+    </form>
+  </div>
+</div>
 
 <script>
 document.querySelectorAll('.faq-q').forEach(btn=>{
@@ -426,4 +476,93 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     if(!wasOpen) item.classList.add('open');
   });
 });
+
+let WEB3FORMS_KEY = null;
+fetch('site.json').then(r=>r.json()).then(cfg=>{ WEB3FORMS_KEY = cfg.web3forms_access_key || null; }).catch(()=>{});
+
+const FORM_PRESETS = {
+  survey: {
+    title: 'Đặt lịch khảo sát tại xưởng',
+    desc: 'Để lại thông tin, kỹ thuật viên Nhất Quán sẽ liên hệ hẹn lịch khảo sát dây chuyền của bạn.',
+    subject: '[Website Nhất Quán] Yêu cầu đặt lịch khảo sát',
+    placeholder: 'Mô tả ngắn về dây chuyền / thiết bị cần khảo sát...'
+  },
+  support: {
+    title: 'Liên hệ hỗ trợ kỹ thuật',
+    desc: 'Gửi yêu cầu hỗ trợ, đội kỹ thuật Nhất Quán sẽ phản hồi trong thời gian sớm nhất.',
+    subject: '[Website Nhất Quán] Yêu cầu hỗ trợ kỹ thuật',
+    placeholder: 'Mô tả vấn đề cần hỗ trợ...'
+  }
+};
+
+const formOverlay = document.getElementById('formModalOverlay');
+const formTitleEl = document.getElementById('formModalTitle');
+const formDescEl = document.getElementById('formModalDesc');
+const leadForm = document.getElementById('leadForm');
+const formStatusEl = document.getElementById('formStatus');
+const formCloseBtn = document.getElementById('formModalClose');
+
+function openLeadForm(kind){
+  const preset = FORM_PRESETS[kind] || FORM_PRESETS.support;
+  leadForm.reset();
+  formTitleEl.textContent = preset.title;
+  formDescEl.textContent = preset.desc;
+  leadForm.querySelector('[name="subject"]').value = preset.subject;
+  leadForm.querySelector('textarea[name="message"]').placeholder = preset.placeholder;
+  formStatusEl.textContent = '';
+  formStatusEl.className = 'form-status';
+  formOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLeadForm(){
+  formOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-open-form]').forEach(btn=>{
+  btn.addEventListener('click', ()=> openLeadForm(btn.dataset.openForm));
+});
+formCloseBtn.addEventListener('click', closeLeadForm);
+formOverlay.addEventListener('click', (e)=>{ if(e.target === formOverlay) closeLeadForm(); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && formOverlay.classList.contains('open')) closeLeadForm(); });
+
+leadForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const submitBtn = leadForm.querySelector('button[type="submit"]');
+  if(!WEB3FORMS_KEY){
+    formStatusEl.textContent = 'Chưa cấu hình access key gửi form (site.json). Vui lòng liên hệ trực tiếp hotline 0908 050 415.';
+    formStatusEl.className = 'form-status err';
+    return;
+  }
+  leadForm.querySelector('[name="access_key"]').value = WEB3FORMS_KEY;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Đang gửi...';
+  formStatusEl.textContent = '';
+  formStatusEl.className = 'form-status';
+  try{
+    const payload = Object.fromEntries(new FormData(leadForm));
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if(data.success){
+      formStatusEl.textContent = 'Đã gửi thành công! Nhất Quán sẽ liên hệ lại sớm.';
+      formStatusEl.className = 'form-status ok';
+      leadForm.reset();
+      setTimeout(closeLeadForm, 1800);
+    } else {
+      throw new Error(data.message || 'Gửi thất bại, vui lòng thử lại.');
+    }
+  } catch(err){
+    formStatusEl.textContent = 'Gửi không thành công: ' + err.message + '. Vui lòng thử lại hoặc gọi hotline 0908 050 415.';
+    formStatusEl.className = 'form-status err';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Gửi yêu cầu';
+  }
+});
+
 </script>
