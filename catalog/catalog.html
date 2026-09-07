@@ -69,6 +69,14 @@
     letter-spacing:0.14em; text-transform:uppercase; color:var(--chrome-text-dim); margin-bottom:4px;
   }
   .subtitle{font-size:13px; color:var(--chrome-text-dim); max-width:520px; text-align:right;}
+  .home-link-wrap{display:flex; flex-direction:column; align-items:flex-end; gap:8px;}
+  .home-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600;
+    color:var(--chrome-text); border:1px solid var(--chrome-line); border-radius:999px;
+    padding:6px 14px; white-space:nowrap;
+  }
+  .home-link:hover{background:rgba(255,255,255,0.1);}
+  .home-link svg{width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2;}
 
   .layout-tabs{display:flex; gap:4px; border-bottom:1px solid rgba(255,255,255,0.18);}
   .layout-tab{
@@ -437,7 +445,10 @@
         <span class="eyebrow">Công ty CP Công nghiệp Nhất Quán</span>
         <h1 id="pageTitle">Catalog thông số sản phẩm</h1>
       </div>
-      <div class="subtitle" id="subtitleCount">Dữ liệu thật, lấy trực tiếp từ website chính hãng.</div>
+      <div class="home-link-wrap">
+        <a class="home-link" href="index.html"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Trang chủ</a>
+        <div class="subtitle" id="subtitleCount">Dữ liệu thật, lấy trực tiếp từ website chính hãng.</div>
+      </div>
     </div>
     <div class="layout-tabs" id="siteTabs">
       <button class="layout-tab site-tab active" data-page="intro">Giới thiệu<small>Về Nhất Quán</small></button>
