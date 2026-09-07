@@ -1188,7 +1188,13 @@ document.getElementById("siteTabs").addEventListener("click", (e)=>{
   const btn = e.target.closest(".site-tab");
   if(!btn) return;
   setPage(btn.dataset.page);
+  history.replaceState(null, "", "#" + btn.dataset.page);
 });
+
+function pageFromHash(){
+  const key = location.hash.replace("#", "");
+  return PAGE_TITLES[key] ? key : null;
+}
 
 const SOLUTIONS = [
   {
@@ -1326,7 +1332,11 @@ function renderMirkaIndustriesGrid(){
 renderMirkaIndustriesGrid();
 renderCustomerLogos();
 renderWorkPhotosGrid();
-setPage("intro");
+setPage(pageFromHash() || "intro");
+window.addEventListener("hashchange", ()=>{
+  const p = pageFromHash();
+  if(p) setPage(p);
+});
 
 let searchDebounce;
 document.getElementById("searchInput").addEventListener("input", (e)=>{
